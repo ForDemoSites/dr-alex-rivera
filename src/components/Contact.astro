@@ -1,10 +1,14 @@
 ---
 import { site } from '../data/site';
+// The email_off markers stop Cloudflare's email obfuscation from replacing the
+// link with a script-decoded one, so the address works without JavaScript.
 ---
 
 <section class="psy_section" id="contact">
   <div class="psy_container psy_contact">
     <h2>Contact</h2>
+    <Fragment set:html="<!--email_off-->" />
     <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
+    <Fragment set:html="<!--/email_off-->" />
   </div>
 </section>
