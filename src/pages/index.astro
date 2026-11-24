@@ -8,23 +8,15 @@ import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
 import { getImage } from 'astro:assets';
 import { site } from '../data/site';
-import heroImage from '../assets/female-doctor-white-coat-portrait.webp';
+import ogSource from '../assets/og-image.jpg';
 
 const title = `${site.name} | ${site.title}`;
 const description =
   'Dr Alex Rivera is a clinical psychologist in Sydney who trains psychologists, counsellors and social workers in Acceptance and Commitment Therapy.';
-// The source photo is 1122px wide and is never upscaled, so the share image is the
-// largest 1.91:1 crop it can supply.
-const OG_WIDTH = 1120;
-const OG_HEIGHT = 586;
-const ogImage = await getImage({
-  src: heroImage,
-  width: OG_WIDTH,
-  height: OG_HEIGHT,
-  format: 'jpg',
-  fit: 'cover',
-  position: 'top',
-});
+// Dedicated 1200x630 share image (1.91:1), cropped from the hero portrait.
+const OG_WIDTH = 1200;
+const OG_HEIGHT = 630;
+const ogImage = await getImage({ src: ogSource, width: OG_WIDTH, height: OG_HEIGHT, format: 'jpg' });
 // Social previews truncate long text, so the share description is shorter.
 const ogDescription = 'Clinical psychologist in Sydney training psychologists, counsellors and social workers in Acceptance and Commitment Therapy.';
 ---

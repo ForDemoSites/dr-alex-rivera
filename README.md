@@ -56,7 +56,7 @@ astro.config.mjs
 ## SEO, AEO and structured data
 
 - Unique `<title>`, meta description (146 characters), 51-character title, canonical URL, Open Graph and Twitter card tags, `lang="en-AU"`.
-- `og:image` (with width, height and alt) is generated from the hero photo (1120×586 JPEG, the 1.91:1 crop the source photo supports); `og:site_name` is set.
+- `og:image` (with width, height and alt) is generated from the hero photo (a dedicated 1200×630 JPEG, `src/assets/og-image.jpg`, cropped from the hero portrait); `og:site_name` is set.
 - `StructuredData.astro` emits one JSON-LD `@graph` in the static HTML: a `Person` (name, job title, bio, email, Sydney/AU address) and three `Course` entries generated from `courses.ts`. Courses reference the Person through `@id` as `provider` and as the `instructor` of an online `CourseInstance`. `timeRequired` is included only for the two courses whose length maps cleanly to an ISO 8601 duration; the monthly supervision course has none.
 - Nothing is invented: no prices, ratings, dates, accreditation, course URLs or credentials.
 - `sitemap-index.xml` is produced by the official integration; `robots.txt` references it.
@@ -76,7 +76,7 @@ The supplied course links are `#`. They are kept in `courses.ts`, but the Course
 
 ## Image credit
 
-Hero image (`src/assets/female-doctor-white-coat-portrait.webp`): an AI-generated image (created with ChatGPT) supplied by the site owner, used under the generator's terms, which give the user rights to the output. It does not depict a real person or Dr Rivera, and the alt text says it is AI-generated. The source file is WebP; Astro generates responsive WebP sizes at build time, and the 1120×586 share image is JPEG for compatibility with social crawlers.
+Hero image (`src/assets/female-doctor-white-coat-portrait.webp`): an AI-generated image (created with ChatGPT) supplied by the site owner, used under the generator's terms, which give the user rights to the output. It does not depict a real person or Dr Rivera, and the alt text says it is AI-generated. The source file is WebP; Astro generates responsive WebP sizes at build time, and the 1200×630 share image is JPEG for compatibility with social crawlers.
 
 ## QA performed
 
