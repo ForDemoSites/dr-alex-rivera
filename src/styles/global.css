@@ -299,6 +299,11 @@ img {
   .psy_section {
     padding-block: var(--psy_space-5);
   }
+
+  .psy_footer__inner {
+    justify-content: center;
+    text-align: center;
+  }
 }
 
 @media (max-width: 25rem) {
