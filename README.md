@@ -33,9 +33,9 @@ npm run preview  # serve dist/ locally
    - Build command: `npm run build`
    - Build output directory: `dist`
 4. Deploy. No environment variables or adapter are needed.
-5. Once the real URL is known (the `*.pages.dev` address or a custom domain), update `SITE_URL` in `astro.config.mjs` and redeploy. It drives the canonical URL, Open Graph URLs, JSON-LD ids, the sitemap and `robots.txt`.
+5. Add the custom domain under the Pages project's **Custom domains** tab. The site URL is set in `SITE_URL` in `astro.config.mjs` and drives the canonical URL, Open Graph URLs, JSON-LD ids, the sitemap and `robots.txt`. Change it there if the domain changes.
 
-The URL currently configured, `https://dr-alex-rivera.pages.dev`, is a placeholder.
+The URL currently configured is `https://psychwire.patmayo.com`. Until that custom domain is connected in Cloudflare, the canonical and sitemap point at a domain that isn't live yet.
 
 ## Project structure
 
@@ -92,6 +92,6 @@ Hero photo: "Therapist listens to patient in a counseling session" by Vitaly Gar
 
 ## Known limitations
 
-- The site URL is a placeholder until the real deployment domain is set (see above).
+- The configured domain (`psychwire.patmayo.com`) must be connected in Cloudflare Pages for the canonical URL and sitemap to resolve.
 - Not done: screen-reader testing (VoiceOver/NVDA), cross-browser testing beyond Chromium, and Lighthouse against the live Cloudflare URL.
 - Course links are placeholders by design, so there is no enrolment path yet.
