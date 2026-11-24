@@ -80,18 +80,39 @@ Hero image (`src/assets/female-doctor-white-coat-portrait.webp`): an AI-generate
 
 ## QA performed
 
+Local checks:
+
 - [x] `npm run check`: 0 errors, 0 warnings, 0 hints
-- [x] `npm run build`: succeeds; one static page, sitemap generated
+- [x] `npm run build`: succeeds; one static page, sitemap and `robots.txt` generated
 - [x] Built HTML contains all content; the only script tag is JSON-LD
 - [x] Title and description verified in output; JSON-LD parsed (1 Person, 3 Course)
 - [x] Heading order: h1 → h2 (About, Courses, Contact) with h3 course titles
 - [x] Keyboard: skip link first and visible, then brand, nav links and mailto, each with a focus ring
-- [x] Layout checked at 375, 768 and desktop widths; no horizontal overflow
+- [x] Layout checked at 320, 375, 600, 641, 683, 749 and desktop widths; no horizontal overflow
 - [x] Contrast measured on the blue palette: all text at 7:1 or higher
-- [x] Lighthouse (local production preview, default mobile profile): Performance 100, Accessibility 100, Best Practices 100, SEO 100; LCP 0.9 s, CLS 0
+
+Live site (`https://psychwire.patmayo.com`):
+
+- [x] PageSpeed Insights, mobile: Performance 100, Accessibility 100, Best Practices 100, SEO 100 (FCP 0.8 s, LCP 0.9 s, TBT 0 ms, CLS 0)
+- [x] Google Rich Results Test: 3 valid Course items
+- [x] Schema.org Markup Validator: 0 errors, 0 warnings on all three Courses (the Person is validated nested under each Course through its `@id`)
+- [x] W3C Nu HTML Checker: no errors or warnings; document outline matches the intended headings
+- [x] WAVE: 0 errors, 0 contrast errors, AIM score 10/10; one advisory ("possible heading") for the hero tagline, which is intentionally a paragraph
+- [x] Open Graph preview (opengraph.xyz): share image 1200×630, title and description within recommended lengths; the optional "conversion text" suggestion is intentionally ignored
+- [x] Live HTML fetched without JavaScript: all content present, plain `mailto:` link, no third-party scripts
+
+### Issues found and fixed
+
+- Cloudflare's Email Address Obfuscation rewrote the `mailto:` link into a script-decoded one. The address is now wrapped in `<!--email_off-->` markers so it works without JavaScript.
+- Cloudflare Web Analytics was auto-injecting `beacon.min.js` through the domain's zone settings. It was switched off in the Cloudflare dashboard (this is not controlled by the code).
+- The Open Graph image declared 1200×630 but was generated at 1120×586. It is now a dedicated 1200×630 JPEG.
+- Hero alt text was over 100 characters (WAVE alert); shortened.
+- Hashed assets in `/_astro/` now carry a one-year immutable cache header via `public/_headers`.
 
 ## Known limitations
 
-- The configured domain (`psychwire.patmayo.com`) must be connected in Cloudflare Pages for the canonical URL and sitemap to resolve.
-- Not done: screen-reader testing (VoiceOver/NVDA), cross-browser testing beyond Chromium, and Lighthouse against the live Cloudflare URL.
+- Not done: screen-reader testing (VoiceOver/NVDA) and cross-browser testing beyond Chromium.
+- The hero image is AI-generated and shows a doctor in a white coat; it does not depict a real person or Dr Rivera.
 - Course links are placeholders by design, so there is no enrolment path yet.
+- The site URL is set in `astro.config.mjs` (`SITE_URL`); change it there if the domain changes.
+- The PageSpeed "Agentic Browsing" category (`llms.txt`, agent manifest) is experimental and out of scope for this brief.
