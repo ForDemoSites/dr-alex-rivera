@@ -7,7 +7,7 @@ export const site = {
   /** Describes what is pictured; the image is AI-generated and does not depict a real person or Dr Rivera. */
   heroImageTitle: 'Portrait of a smiling female doctor in a white coat',
   heroImageAlt:
-    'AI-generated portrait of a smiling woman with brown hair in a white coat with a stethoscope around her neck, arms crossed, standing in a bright clinic',
+    'AI-generated portrait of a smiling woman in a white coat and stethoscope in a bright clinic',
   address: {
     locality: 'Sydney',
     country: 'AU',
