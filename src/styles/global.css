@@ -306,6 +306,17 @@ img {
   }
 }
 
+@media (max-width: 30rem) {
+  .psy_header__inner {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .psy_nav__list {
+    justify-content: center;
+  }
+}
+
 @media (max-width: 25rem) {
   .psy_container {
     width: calc(100% - 2rem);

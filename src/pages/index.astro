@@ -13,10 +13,24 @@ import heroImage from '../assets/female-doctor-white-coat-portrait.webp';
 const title = `${site.name} | ${site.title}`;
 const description =
   'Dr Alex Rivera is a clinical psychologist in Sydney who trains psychologists, counsellors and social workers in Acceptance and Commitment Therapy.';
-const ogImage = await getImage({ src: heroImage, width: 1200, height: 630, format: 'jpg', fit: 'cover', position: 'top' });
+// The source photo is 1122px wide and is never upscaled, so the share image is the
+// largest 1.91:1 crop it can supply.
+const OG_WIDTH = 1120;
+const OG_HEIGHT = 586;
+const ogImage = await getImage({
+  src: heroImage,
+  width: OG_WIDTH,
+  height: OG_HEIGHT,
+  format: 'jpg',
+  fit: 'cover',
+  position: 'top',
+});
+// Social previews truncate long text, so the share description is shorter.
+const ogDescription = 'Clinical psychologist in Sydney training psychologists, counsellors and social workers in Acceptance and Commitment Therapy.';
 ---
 
-<BaseLayout title={title} description={description} ogImage={{ src: ogImage.src, width: 1200, height: 630, alt: site.heroImageAlt }}>
+<BaseLayout title={title} description={description} ogDescription={ogDescription}
+  ogImage={{ src: ogImage.src, width: OG_WIDTH, height: OG_HEIGHT, alt: site.heroImageAlt }}>
   <Header />
   <main id="main" tabindex="-1">
     <Hero />

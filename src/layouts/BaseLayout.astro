@@ -6,11 +6,13 @@ import { site } from '../data/site';
 interface Props {
   title: string;
   description: string;
+  /** Shorter text for social previews. Defaults to description. */
+  ogDescription?: string;
   /** A real share image. Omit to skip og:image. */
   ogImage?: { src: string; width: number; height: number; alt: string };
 }
 
-const { title, description, ogImage } = Astro.props;
+const { title, description, ogDescription, ogImage } = Astro.props;
 const siteName = site.name;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const ogImageUrl = ogImage ? new URL(ogImage.src, Astro.site).href : undefined;
@@ -28,7 +30,7 @@ const ogImageUrl = ogImage ? new URL(ogImage.src, Astro.site).href : undefined;
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta property="og:description" content={ogDescription ?? description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content="en_AU" />
     <meta property="og:site_name" content={siteName} />
