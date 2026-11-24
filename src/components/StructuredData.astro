@@ -1,0 +1,45 @@
+---
+import { site } from '../data/site';
+import { courses } from '../data/courses';
+
+const origin = new URL(Astro.url.pathname, Astro.site).href;
+const personId = `${origin}#person`;
+
+const graph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': personId,
+      name: site.name,
+      jobTitle: site.title,
+      description: site.bio,
+      email: site.email,
+      url: origin,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: site.address.locality,
+        addressCountry: site.address.country,
+      },
+    },
+    ...courses.map((course) => ({
+      '@type': 'Course',
+      '@id': `${origin}#course-${course.id}`,
+      name: course.title,
+      description: course.description,
+      provider: { '@id': personId },
+      ...(course.isoDuration && { timeRequired: course.isoDuration }),
+      hasCourseInstance: {
+        '@type': 'CourseInstance',
+        courseMode: 'online',
+        instructor: { '@id': personId },
+      },
+    })),
+  ],
+};
+
+// "<" is escaped so the payload can never close the script element.
+const json = JSON.stringify(graph).replace(/</g, '\\u003c');
+---
+
+<script type="application/ld+json" set:html={json} />

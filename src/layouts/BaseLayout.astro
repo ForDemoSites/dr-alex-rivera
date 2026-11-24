@@ -1,0 +1,53 @@
+---
+import '../styles/global.css';
+import StructuredData from '../components/StructuredData.astro';
+import { site } from '../data/site';
+
+interface Props {
+  title: string;
+  description: string;
+  /** A real share image. Omit to skip og:image. */
+  ogImage?: { src: string; width: number; height: number; alt: string };
+}
+
+const { title, description, ogImage } = Astro.props;
+const siteName = site.name;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImageUrl = ogImage ? new URL(ogImage.src, Astro.site).href : undefined;
+---
+
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="en_AU" />
+    <meta property="og:site_name" content={siteName} />
+    {
+      ogImage && ogImageUrl && (
+        <>
+          <meta property="og:image" content={ogImageUrl} />
+          <meta property="og:image:width" content={String(ogImage.width)} />
+          <meta property="og:image:height" content={String(ogImage.height)} />
+          <meta property="og:image:alt" content={ogImage.alt} />
+        </>
+      )
+    }
+    <meta name="twitter:card" content={ogImageUrl ? 'summary_large_image' : 'summary'} />
+
+    <StructuredData />
+  </head>
+  <body>
+    <a class="psy_skip-link" href="#main">Skip to main content</a>
+    <slot />
+  </body>
+</html>

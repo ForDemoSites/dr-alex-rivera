@@ -1,0 +1,23 @@
+---
+import { hasRealLink, type Course } from '../data/courses';
+
+interface Props {
+  course: Course;
+}
+
+const { course } = Astro.props;
+---
+
+<article class="psy_course">
+  <p class="psy_course__duration">{course.length}</p>
+  <h3 class="psy_course__title">{course.title}</h3>
+  <p class="psy_course__description">{course.description}</p>
+  {
+    hasRealLink(course) && (
+      <a class="psy_course__link" href={course.href}>
+        View course <span class="psy_visually-hidden">: {course.title}</span>
+        <span aria-hidden="true">&#8599;</span>
+      </a>
+    )
+  }
+</article>

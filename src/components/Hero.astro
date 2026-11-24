@@ -1,0 +1,30 @@
+---
+import { Image } from 'astro:assets';
+import { site } from '../data/site';
+import heroImage from '../assets/hero.jpg';
+
+---
+
+<section class="psy_hero" id="home">
+  <div class="psy_container psy_hero__inner">
+    <div class="psy_hero__content">
+      <h1>{site.name}</h1>
+      <p class="psy_hero__subtitle">{site.title}</p>
+      <a class="psy_button" href="#courses">Explore courses <span aria-hidden="true">&#8594;</span></a>
+    </div>
+    <Image
+      class="psy_hero__image"
+      src={heroImage}
+      alt={site.heroImageAlt}
+      width={720}
+      height={720}
+      widths={[360, 540, 720]}
+      sizes="(min-width: 48rem) 40vw, 100vw"
+      loading="eager"
+      fetchpriority="high"
+      format="webp"
+      fit="cover"
+      position="left"
+    />
+  </div>
+</section>

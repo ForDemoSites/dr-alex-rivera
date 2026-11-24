@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Courses from '../components/Courses.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+import { getImage } from 'astro:assets';
+import { site } from '../data/site';
+import heroImage from '../assets/hero.jpg';
+
+const title = `${site.name} | ${site.title}`;
+const description =
+  'Dr Alex Rivera is a clinical psychologist in Sydney who trains psychologists, counsellors and social workers in Acceptance and Commitment Therapy.';
+const ogImage = await getImage({ src: heroImage, width: 1200, height: 630, format: 'jpg' });
+---
+
+<BaseLayout title={title} description={description} ogImage={{ src: ogImage.src, width: 1200, height: 630, alt: site.heroImageAlt }}>
+  <Header />
+  <main id="main" tabindex="-1">
+    <Hero />
+    <About />
+    <Courses />
+    <Contact />
+  </main>
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,13 @@
+---
+import { courses } from '../data/courses';
+import CourseCard from './CourseCard.astro';
+---
+
+<section class="psy_section psy_section--tinted" id="courses">
+  <div class="psy_container">
+    <h2>Courses</h2>
+    <div class="psy_courses">
+      {courses.map((course) => <CourseCard course={course} />)}
+    </div>
+  </div>
+</section>
