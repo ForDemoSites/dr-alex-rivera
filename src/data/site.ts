@@ -4,9 +4,10 @@ export const site = {
   title: 'Clinical Psychologist and Trainer',
   bio: 'Dr Alex Rivera is a clinical psychologist based in Sydney, Australia. For the past 12 years she has trained psychologists, counsellors and social workers in Acceptance and Commitment Therapy, a practical approach that helps people handle difficult thoughts and feelings and act on what matters to them.',
   email: 'hello@example.com',
-  /** Describes what is pictured; the photo is a stock image, not Dr Rivera. */
+  /** Describes what is pictured; the image is AI-generated and does not depict a real person or Dr Rivera. */
+  heroImageTitle: 'Portrait of a smiling female doctor in a white coat',
   heroImageAlt:
-    'Stock photo of a psychologist in a white blazer and glasses, seated on a sofa taking notes while listening to a client in a bright consulting room',
+    'AI-generated portrait of a smiling woman with brown hair in a white coat with a stethoscope around her neck, arms crossed, standing in a bright clinic',
   address: {
     locality: 'Sydney',
     country: 'AU',

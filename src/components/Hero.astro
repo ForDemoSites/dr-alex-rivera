@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import { site } from '../data/site';
-import heroImage from '../assets/hero.jpg';
+import heroImage from '../assets/female-doctor-white-coat-portrait.webp';
 
 ---
 
@@ -16,6 +16,7 @@ import heroImage from '../assets/hero.jpg';
       class="psy_hero__image"
       src={heroImage}
       alt={site.heroImageAlt}
+      title={site.heroImageTitle}
       width={720}
       height={720}
       widths={[360, 540, 720]}
@@ -24,7 +25,7 @@ import heroImage from '../assets/hero.jpg';
       fetchpriority="high"
       format="webp"
       fit="cover"
-      position="left"
+      position="top"
     />
   </div>
 </section>

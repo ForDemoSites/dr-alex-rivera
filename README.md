@@ -41,7 +41,7 @@ The URL currently configured is `https://psychwire.patmayo.com`. Until that cust
 
 ```
 src/
-  assets/hero.jpg          Source hero photo (optimised at build)
+  assets/female-doctor-white-coat-portrait.webp   Hero photo (optimised at build)
   components/              Header, Hero, About, Courses, CourseCard, Contact, Footer, StructuredData
   data/site.ts             Name, title, bio, email, location
   data/courses.ts          Typed course data (renders cards AND JSON-LD)
@@ -76,7 +76,7 @@ The supplied course links are `#`. They are kept in `courses.ts`, but the Course
 
 ## Image credit
 
-Hero photo: "Therapist listens to patient in a counseling session" by Vitaly Gariev on [Unsplash](https://unsplash.com/photos/therapist-listens-to-patient-in-a-counseling-session-tw-mAZXr6H4), used under the [Unsplash License](https://unsplash.com/license). It is a stock photo and does not depict Dr Rivera.
+Hero image (`src/assets/female-doctor-white-coat-portrait.webp`): an AI-generated image (created with ChatGPT) supplied by the site owner, used under the generator's terms, which give the user rights to the output. It does not depict a real person or Dr Rivera, and the alt text says it is AI-generated. The source file is WebP; Astro generates responsive WebP sizes at build time, and the 1200×630 share image is JPEG for compatibility with social crawlers.
 
 ## QA performed
 
